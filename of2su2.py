@@ -43,6 +43,8 @@ from pathlib import Path
 
 import numpy as np
 
+__version__ = "1.0.0"
+
 VTK_TET, VTK_HEX, VTK_PRISM, VTK_PYR = 10, 12, 13, 14
 NODES = {VTK_TET: 4, VTK_HEX: 8, VTK_PRISM: 6, VTK_PYR: 5}
 # outward faces of the VTK linear cells (positive-volume VTK ordering), -1 = triangle
@@ -2338,6 +2340,7 @@ def main(argv=None):
                          "(it fails on quad interfaces); changes only the cells at the interface")
     ap.add_argument("--nproc", type=int, default=None, help="worker processes (default: all CPUs; 1 = serial)")
     ap.add_argument("--json", action="store_true", help="print the full report instead of the summary")
+    ap.add_argument("--version", action="version", version=f"of2su2 {__version__}")
     a = ap.parse_args(argv)
     if a.check:
         rep = check_su2(a.check, a.vtk)
