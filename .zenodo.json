@@ -1,0 +1,13 @@
+{
+  "title": "of2su2: OpenFOAM to SU2 mesh converter",
+  "upload_type": "software",
+  "creators": [{"name": "Hiwale, Vaibhav"}],
+  "description": "<p>of2su2 converts OpenFOAM meshes (<code>constant/polyMesh</code>), including snappyHexMesh meshes with polyhedra and hanging nodes, into valid, conformal SU2 meshes. Only the cells SU2 cannot use are changed: hexahedra with hanging nodes are split with mixed-element transition patterns (MixedOcTree), wall-layer polygonal prisms become triangular prisms, and the remaining polyhedra are split around one centre point. Every conversion is checked (no inverted elements, every face matched, volume preserved), and the mesh quality is computed exactly as SU2 computes it (dual-CV orthogonality, CV face aspect ratio, sub-volume ratio). Separated OpenFOAM cellZones become SU2 zones with their interface markers.</p><p>Single Python file, requires numpy. Install with <code>pip install of2su2</code>. Source, documentation and method: https://github.com/VaibhavHiwale/of2su2</p>",
+  "notes": "Method, validation and credits: docs/METHOD.md in the repository. Cite all versions with DOI 10.5281/zenodo.24127911.",
+  "license": "GPL-3.0-or-later",
+  "keywords": ["OpenFOAM", "SU2", "CFD", "mesh conversion", "snappyHexMesh", "polyhedral mesh", "hanging nodes", "mesh quality"],
+  "related_identifiers": [
+    {"identifier": "https://github.com/VaibhavHiwale/of2su2", "relation": "isSupplementTo", "scheme": "url"},
+    {"identifier": "https://pypi.org/project/of2su2/", "relation": "isIdenticalTo", "scheme": "url"}
+  ]
+}
