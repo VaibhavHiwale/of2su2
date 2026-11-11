@@ -43,7 +43,7 @@ from pathlib import Path
 
 import numpy as np
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 VTK_TET, VTK_HEX, VTK_PRISM, VTK_PYR = 10, 12, 13, 14
 NODES = {VTK_TET: 4, VTK_HEX: 8, VTK_PRISM: 6, VTK_PYR: 5}

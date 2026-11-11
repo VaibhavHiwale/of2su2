@@ -1,5 +1,7 @@
 # of2su2 — OpenFOAM mesh → SU2 mesh
 
+[![PyPI](https://img.shields.io/pypi/v/of2su2)](https://pypi.org/project/of2su2/) [![tests](https://github.com/VaibhavHiwale/of2su2/actions/workflows/tests.yml/badge.svg)](https://github.com/VaibhavHiwale/of2su2/actions/workflows/tests.yml) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/VaibhavHiwale/of2su2/blob/main/LICENSE)
+
 Converts an OpenFOAM mesh (`constant/polyMesh`, including snappyHexMesh meshes with polyhedra and hanging nodes) into a
 valid, conformal SU2 mesh, and reports its quality exactly as SU2 computes it.
 
@@ -12,21 +14,24 @@ valid, conformal SU2 mesh, and reports its quality exactly as SU2 computes it.
 ## Installation
 
 ```bash
-pip install numpy          # the only dependency (pytest for the tests)
-python3 of2su2.py --help
+pip install of2su2                                          # from PyPI
+pip install git+https://github.com/VaibhavHiwale/of2su2     # latest version from GitHub
+of2su2 --help
 ```
+
+Or download the single file `of2su2.py` and run `python3 of2su2.py` (needs only numpy).
 
 ## Usage
 
 ```bash
 # convert (case folder or its constant/polyMesh folder)
-python3 of2su2.py  path/to/openfoamCase  mesh.su2
+of2su2  path/to/openfoamCase  mesh.su2
 
 # convert and improve the worst added points against SU2's quality metrics (slower)
-python3 of2su2.py  path/to/openfoamCase  mesh.su2  --opt-apex 40 --opt-vr 1000
+of2su2  path/to/openfoamCase  mesh.su2  --opt-apex 40 --opt-vr 1000
 
 # score any .su2 file with SU2's quality metrics (optionally compare with SU2's MESH_QUALITY output)
-python3 of2su2.py  --check mesh.su2  [--vtk flow.vtk]
+of2su2  --check mesh.su2  [--vtk flow.vtk]
 ```
 
 Output: `mesh.su2`, a full report `mesh.su2.json`, mesh information `mesh.su2.info.json`, and a summary on screen:
@@ -80,7 +85,7 @@ For a rotating zone (MRF) in SU2, separate the zone in OpenFOAM first:
 ```bash
 createBaffles -overwrite                 # faceZone → patch pair (e.g. cyclicAMI AMI1/AMI2)
 mergeOrSplitBaffles -split -overwrite    # duplicate the points → two separated cell regions
-python3 of2su2.py . mesh.su2             # → 2 SU2 zones, interface markers AMI1/AMI2
+of2su2 . mesh.su2             # → 2 SU2 zones, interface markers AMI1/AMI2
 ```
 
 In the SU2 config use `MARKER_ZONE_INTERFACE= ( AMI1, AMI2 )` and `KIND_INTERPOLATION`. The interface nodes coincide, so
@@ -100,13 +105,13 @@ use as they are.
 
 ## Method and validation
 
-See [docs/METHOD.md](docs/METHOD.md): SU2 mesh requirements (from the SU2 source), the conversion steps, the quality
+See [docs/METHOD.md](https://github.com/VaibhavHiwale/of2su2/blob/main/docs/METHOD.md): SU2 mesh requirements (from the SU2 source), the conversion steps, the quality
 metrics, performance, validation results and credits.
 
 ## Tests
 
 ```bash
-python3 -m pytest -q tests/
+pip install pytest && python3 -m pytest -q tests/
 ```
 
 | Path | Content |
@@ -118,7 +123,11 @@ python3 -m pytest -q tests/
 
 ## Licence
 
-**GPL v3 or later** (`LICENSE`). of2su2 contains the hanging-node transition-pattern table of MixedOcTree
+**GPL v3 or later** ([LICENSE](https://github.com/VaibhavHiwale/of2su2/blob/main/LICENSE)). of2su2 contains the hanging-node transition-pattern table of MixedOcTree
 (github.com/clobosmesher/MixedOcTree, (C) 2013-2017 Claudio Lobos et al., GPL v3), based on E. González & C. Lobos,
 "A set of mixed-element transition patterns for adaptive 3D meshing" (2014/15). Other prior art is credited in
-[docs/METHOD.md](docs/METHOD.md).
+[docs/METHOD.md](https://github.com/VaibhavHiwale/of2su2/blob/main/docs/METHOD.md).
+
+## Citation
+
+If you use of2su2 in published work, please cite it (GitHub: "Cite this repository", from `CITATION.cff`).

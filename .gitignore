@@ -11,3 +11,6 @@ testcases/**/postProcessing/
 testcases/**/processor*/
 # the rotor cut cannot be regenerated → tracked
 !testcases/rotor_cut/constant/polyMesh/
+dist/
+build/
+*.egg-info/

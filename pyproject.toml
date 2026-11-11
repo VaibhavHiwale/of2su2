@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "of2su2"
+dynamic = ["version"]
+description = "Convert OpenFOAM meshes (incl. snappyHexMesh polyhedra and hanging nodes) into valid SU2 meshes, with SU2-exact quality checks"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+authors = [{ name = "Vaibhav Hiwale" }]
+requires-python = ">=3.9"
+dependencies = ["numpy"]
+keywords = ["openfoam", "su2", "cfd", "mesh", "mesh-conversion", "snappyhexmesh", "polyhedral", "hanging-nodes"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+
+[project.urls]
+Homepage = "https://github.com/VaibhavHiwale/of2su2"
+Documentation = "https://github.com/VaibhavHiwale/of2su2/blob/main/docs/METHOD.md"
+Issues = "https://github.com/VaibhavHiwale/of2su2/issues"
+
+[project.scripts]
+of2su2 = "of2su2:main"
+
+[tool.setuptools]
+py-modules = ["of2su2"]
+
+[tool.setuptools.dynamic]
+version = { attr = "of2su2.__version__" }

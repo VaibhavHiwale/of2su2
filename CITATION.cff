@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use of2su2, please cite it as below."
+title: "of2su2: OpenFOAM to SU2 mesh converter"
+type: software
+authors:
+  - family-names: Hiwale
+    given-names: Vaibhav
+version: 1.0.1
+license: GPL-3.0-or-later
+repository-code: "https://github.com/VaibhavHiwale/of2su2"
+keywords: [OpenFOAM, SU2, CFD, mesh conversion, snappyHexMesh]
