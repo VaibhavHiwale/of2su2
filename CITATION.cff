@@ -7,5 +7,6 @@ authors:
     given-names: Vaibhav
 version: 1.0.1
 license: GPL-3.0-or-later
+doi: 10.5281/zenodo.24127911
 repository-code: "https://github.com/VaibhavHiwale/of2su2"
 keywords: [OpenFOAM, SU2, CFD, mesh conversion, snappyHexMesh]
