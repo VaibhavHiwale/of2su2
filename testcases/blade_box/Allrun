@@ -1,0 +1,12 @@
+#!/bin/sh
+# blade_box — blockMesh -> snappyHexMesh -> createBaffles + split (AMI1/AMI2) -> checkMesh. Logs in logs/.
+cd "${0%/*}" || exit 1
+. "${WM_PROJECT_DIR:?source OpenFOAM first}/bin/tools/RunFunctions"
+mkdir -p logs
+surfaceFeatureExtract > logs/log.surfaceFeatureExtract 2>&1 || exit 1
+blockMesh                              > logs/log.blockMesh 2>&1            || exit 1
+snappyHexMesh -overwrite               > logs/log.snappyHexMesh 2>&1        || exit 1
+createBaffles -overwrite               > logs/log.createBaffles 2>&1        || exit 1
+mergeOrSplitBaffles -split -overwrite  > logs/log.mergeOrSplitBaffles 2>&1  || exit 1
+checkMesh -allTopology -allGeometry    > logs/log.checkMesh 2>&1
+echo done

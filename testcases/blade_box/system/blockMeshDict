@@ -1,0 +1,7 @@
+FoamFile { version 2.0; format ascii; class dictionary; object blockMeshDict; }
+// background 0.2 m cells (level L = 0.2/2^L); box offset 1.3 mm in y so the blade caps are off the octree planes (v8 lesson)
+scale 1;
+vertices ( (-1 -1.0013 -0.6) (1 -1.0013 -0.6) (1 0.9987 -0.6) (-1 0.9987 -0.6)
+           (-1 -1.0013  0.6) (1 -1.0013  0.6) (1 0.9987  0.6) (-1 0.9987  0.6) );
+blocks ( hex (0 1 2 3 4 5 6 7) (10 10 6) simpleGrading (1 1 1) );
+boundary ( farfield { type patch; faces ( (0 3 2 1) (4 5 6 7) (0 4 7 3) (1 2 6 5) (0 1 5 4) (3 7 6 2) ); } );

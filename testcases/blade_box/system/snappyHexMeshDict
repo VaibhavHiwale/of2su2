@@ -1,0 +1,47 @@
+FoamFile { version 2.0; format ascii; class dictionary; object snappyHexMeshDict; }
+// Converter test mesh. Features of a typical snappy rotor mesh: refinement-level transitions (split-hex polyhedra,
+// hanging nodes), pitched blade with snapped layers (prisms, layer polyhedra, collapsed tet-wedges at the edges),
+// internal MRF faceZone -> createBaffles + mergeOrSplitBaffles -split -> AMI1/AMI2 (two cell regions), binary output.
+castellatedMesh true; snap true; addLayers true;
+geometry
+{
+    blade.stl { type triSurfaceMesh; name blade;                     // make_blade_stl.py: chord 0.15, span y 0.15-0.70, t 0.02, 8 deg pitch
+                regions { wall { name blade_wall; } root_cap { name blade_root_cap; } tip_cap { name blade_tip_cap; } } }
+    mrf   { type searchableCylinder; point1 (0 0 -0.15); point2 (0 0 0.15); radius 0.8; }
+}
+castellatedMeshControls
+{
+    maxLocalCells 2000000; maxGlobalCells 4000000; minRefinementCells 0; nCellsBetweenLevels 2;
+    features ( { file "blade.eMesh"; level 5; } );
+    refinementSurfaces
+    {
+        blade { level (4 5); regions { blade_wall { level (4 5); patchInfo { type wall; } }
+                                       blade_root_cap { level (4 5); patchInfo { type wall; } }
+                                       blade_tip_cap { level (4 5); patchInfo { type wall; } } } }
+        mrf   { level (2 2); faceType internal; cellZone rotating; faceZone rotating; cellZoneInside inside; }
+    }
+    resolveFeatureAngle 30;
+    refinementRegions { blade { mode distance; levels ((0.02 4) (0.06 3)); } }
+    locationInMesh (0.913 0.871 0.513);
+    allowFreeStandingZoneFaces false;
+}
+snapControls
+{
+    nSmoothPatch 3; tolerance 2.0; nSolveIter 30; nRelaxIter 5;
+    nFeatureSnapIter 10; implicitFeatureSnap false; explicitFeatureSnap true; multiRegionFeatureSnap true;
+}
+addLayersControls
+{
+    relativeSizes false; firstLayerThickness 0.001; minThickness 0.0003; expansionRatio 1.2;
+    layers { blade_wall { nSurfaceLayers 3; } blade_root_cap { nSurfaceLayers 0; } blade_tip_cap { nSurfaceLayers 0; } }
+    nGrow 0; featureAngle 120; nRelaxIter 5; nSmoothSurfaceNormals 3; nSmoothNormals 3;
+    nSmoothThickness 10; maxFaceThicknessRatio 0.5; maxThicknessToMedialRatio 0.3;
+    minMedialAxisAngle 90; nBufferCellsNoExtrude 0; nLayerIter 50;
+}
+meshQualityControls
+{
+    maxNonOrtho 65; maxBoundarySkewness 20; maxInternalSkewness 4; maxConcave 80;
+    minVol 1e-13; minTetQuality 1e-30; minArea -1; minTwist 0.05; minDeterminant 0.001;
+    minFaceWeight 0.05; minVolRatio 0.01; minTriangleTwist -1; nSmoothScale 4; errorReduction 0.75;
+}
+mergeTolerance 1e-6;

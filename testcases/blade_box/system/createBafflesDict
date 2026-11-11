@@ -1,0 +1,20 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  MRF interface -> cyclicAMI pair (run after snappyHexMesh: createBaffles -overwrite, then
+  mergeOrSplitBaffles -split -overwrite). As ESI tutorial interFoam/RAS/mixerVesselAMI.
+  snappy snaps faceZone 'rotating' ONCE (faceType internal), so AMI1 and AMI2 get identical faces (weights = 1).
+  Solver: constant/MRFProperties must list  nonRotatingPatches (AMI1 AMI2);
+\*---------------------------------------------------------------------------*/
+FoamFile { version 2.0; format ascii; class dictionary; object createBafflesDict; }
+internalFacesOnly true;
+baffles
+{
+    rotating
+    {
+        type faceZone; zoneName rotating;
+        patches
+        {
+            master { name AMI1; type cyclicAMI; matchTolerance 0.0001; neighbourPatch AMI2; transform noOrdering; }
+            slave  { name AMI2; type cyclicAMI; matchTolerance 0.0001; neighbourPatch AMI1; transform noOrdering; }
+        }
+    }
+}

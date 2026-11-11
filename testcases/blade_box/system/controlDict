@@ -1,0 +1,4 @@
+FoamFile { version 2.0; format ascii; class dictionary; object controlDict; }
+// blade_box: small snappyHexMesh mesh with the features that break an OpenFOAM -> SU2 conversion
+application simpleFoam; startFrom startTime; startTime 0; stopAt endTime; endTime 1; deltaT 1;
+writeControl timeStep; writeInterval 1; writeFormat binary; writePrecision 17;

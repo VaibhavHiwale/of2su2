@@ -1,0 +1,13 @@
+# local outputs (converted meshes, SU2 runs)
+work/
+*.su2
+*.vtk
+__pycache__/
+# OpenFOAM test meshes: only the inputs are tracked (Allrun rebuilds the mesh)
+testcases/**/constant/*
+!testcases/**/constant/triSurface/
+testcases/**/logs/
+testcases/**/postProcessing/
+testcases/**/processor*/
+# the rotor cut cannot be regenerated → tracked
+!testcases/rotor_cut/constant/polyMesh/

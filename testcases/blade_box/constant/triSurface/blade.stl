@@ -1,0 +1,90 @@
+solid wall
+ facet normal 0.139173101 0 0.990268069
+  outer loop
+   vertex -0.0756618362 0.15 0.000535301885
+   vertex 0.0728783741 0.15 -0.0203406633
+   vertex 0.0728783741 0.7 -0.0203406633
+  endloop
+ endfacet
+ facet normal 0.139173101 -0 0.990268069
+  outer loop
+   vertex -0.0756618362 0.15 0.000535301885
+   vertex 0.0728783741 0.7 -0.0203406633
+   vertex -0.0756618362 0.7 0.000535301885
+  endloop
+ endfacet
+ facet normal -0.139173101 0 -0.990268069
+  outer loop
+   vertex -0.0728783741 0.15 0.0203406633
+   vertex -0.0728783741 0.7 0.0203406633
+   vertex 0.0756618362 0.7 -0.000535301885
+  endloop
+ endfacet
+ facet normal -0.139173101 0 -0.990268069
+  outer loop
+   vertex -0.0728783741 0.15 0.0203406633
+   vertex 0.0756618362 0.7 -0.000535301885
+   vertex 0.0756618362 0.15 -0.000535301885
+  endloop
+ endfacet
+ facet normal 0.990268069 0 -0.139173101
+  outer loop
+   vertex -0.0756618362 0.15 0.000535301885
+   vertex -0.0756618362 0.7 0.000535301885
+   vertex -0.0728783741 0.7 0.0203406633
+  endloop
+ endfacet
+ facet normal 0.990268069 0 -0.139173101
+  outer loop
+   vertex -0.0756618362 0.15 0.000535301885
+   vertex -0.0728783741 0.7 0.0203406633
+   vertex -0.0728783741 0.15 0.0203406633
+  endloop
+ endfacet
+ facet normal -0.990268069 0 0.139173101
+  outer loop
+   vertex 0.0728783741 0.15 -0.0203406633
+   vertex 0.0756618362 0.15 -0.000535301885
+   vertex 0.0756618362 0.7 -0.000535301885
+  endloop
+ endfacet
+ facet normal -0.990268069 0 0.139173101
+  outer loop
+   vertex 0.0728783741 0.15 -0.0203406633
+   vertex 0.0756618362 0.7 -0.000535301885
+   vertex 0.0728783741 0.7 -0.0203406633
+  endloop
+ endfacet
+endsolid wall
+solid root_cap
+ facet normal -0 1 0
+  outer loop
+   vertex -0.0756618362 0.15 0.000535301885
+   vertex -0.0728783741 0.15 0.0203406633
+   vertex 0.0756618362 0.15 -0.000535301885
+  endloop
+ endfacet
+ facet normal 0 1 0
+  outer loop
+   vertex -0.0756618362 0.15 0.000535301885
+   vertex 0.0756618362 0.15 -0.000535301885
+   vertex 0.0728783741 0.15 -0.0203406633
+  endloop
+ endfacet
+endsolid root_cap
+solid tip_cap
+ facet normal 0 -1 0
+  outer loop
+   vertex -0.0756618362 0.7 0.000535301885
+   vertex 0.0728783741 0.7 -0.0203406633
+   vertex 0.0756618362 0.7 -0.000535301885
+  endloop
+ endfacet
+ facet normal 0 -1 0
+  outer loop
+   vertex -0.0756618362 0.7 0.000535301885
+   vertex 0.0756618362 0.7 -0.000535301885
+   vertex -0.0728783741 0.7 0.0203406633
+  endloop
+ endfacet
+endsolid tip_cap

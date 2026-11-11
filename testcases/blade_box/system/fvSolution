@@ -1,0 +1,5 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  copied from ct_rotor_ige_zR1_far35_v3 (meshing only)
+\*---------------------------------------------------------------------------*/
+FoamFile { version 2.0; format ascii; class dictionary; object fvSolution; }
+solvers {}
