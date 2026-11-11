@@ -1,6 +1,6 @@
 # of2su2 — OpenFOAM mesh → SU2 mesh
 
-[![PyPI](https://img.shields.io/pypi/v/of2su2)](https://pypi.org/project/of2su2/) [![tests](https://github.com/VaibhavHiwale/of2su2/actions/workflows/tests.yml/badge.svg)](https://github.com/VaibhavHiwale/of2su2/actions/workflows/tests.yml) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/VaibhavHiwale/of2su2/blob/main/LICENSE) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24127911.svg)](https://doi.org/10.5281/zenodo.24127911)
+[![PyPI](https://img.shields.io/pypi/v/of2su2?label=PyPI)](https://pypi.org/project/of2su2/) [![tests](https://github.com/VaibhavHiwale/of2su2/actions/workflows/tests.yml/badge.svg)](https://github.com/VaibhavHiwale/of2su2/actions/workflows/tests.yml) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/VaibhavHiwale/of2su2/blob/main/LICENSE) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24127911.svg)](https://doi.org/10.5281/zenodo.24127911)
 
 Converts an OpenFOAM mesh (`constant/polyMesh`, including snappyHexMesh meshes with polyhedra and hanging nodes) into a
 valid, conformal SU2 mesh, and reports its quality exactly as SU2 computes it.
