@@ -10,7 +10,7 @@ readme = "README.md"
 license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
 authors = [{ name = "Vaibhav Hiwale" }]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = ["numpy"]
 keywords = ["openfoam", "su2", "cfd", "mesh", "mesh-conversion", "snappyhexmesh", "polyhedral", "hanging-nodes"]
 classifiers = [
